@@ -1,0 +1,56 @@
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\Workshop 8.exe.config
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\Workshop 8.exe
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\Workshop 8.pdb
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\Enums.NET.dll
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\ExtendedNumerics.BigDecimal.dll
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\MathNet.Numerics.dll
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\Microsoft.IO.RecyclableMemoryStream.dll
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\NPOI.Core.dll
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\NPOI.OOXML.dll
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\NPOI.OpenXml4Net.dll
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\NPOI.OpenXmlFormats.dll
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\SixLabors.Fonts.dll
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\SixLabors.ImageSharp.dll
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\System.Buffers.dll
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\System.Memory.dll
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\System.Security.Cryptography.Pkcs.dll
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\System.Security.Cryptography.Xml.dll
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\System.Text.Encoding.CodePages.dll
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\System.ValueTuple.dll
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\Enums.NET.pdb
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\Enums.NET.xml
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\ExtendedNumerics.BigDecimal.xml
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\ICSharpCode.SharpZipLib.pdb
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\ICSharpCode.SharpZipLib.xml
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\MathNet.Numerics.xml
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\NPOI.Core.pdb
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\NPOI.Core.xml
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\NPOI.OOXML.pdb
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\NPOI.OOXML.xml
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\NPOI.OpenXml4Net.pdb
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\NPOI.OpenXml4Net.xml
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\NPOI.OpenXmlFormats.pdb
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\NPOI.OpenXmlFormats.xml
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\SixLabors.Fonts.xml
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\SixLabors.ImageSharp.xml
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\System.Buffers.xml
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\System.Memory.xml
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\System.Security.Cryptography.Pkcs.xml
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\System.Security.Cryptography.Xml.xml
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\System.Text.Encoding.CodePages.xml
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\bin\Debug\System.ValueTuple.xml
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\obj\Debug\Workshop 8.csproj.AssemblyReference.cache
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\obj\Debug\Workshop 8.csproj.CoreCompileInputs.cache
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\obj\Debug\Workshop 8.csproj.Up2Date
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\obj\Debug\Workshop 8.exe
+C:\Users\tomas\Documents\Institut_Montilivi\M5-Entorns de Desenvolupament\Workshop-8\pilat-lynn-tomas\Workshop 8\Workshop 8\obj\Debug\Workshop 8.pdb
