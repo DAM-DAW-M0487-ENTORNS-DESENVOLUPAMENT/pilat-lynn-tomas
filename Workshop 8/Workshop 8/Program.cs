@@ -18,6 +18,12 @@ namespace Workshop_8
                 Pila<int> intPile = new Pila<int>(intArray);
                 Console.WriteLine(intPile.Count);
                 Console.WriteLine(doublePile.IsReadOnly);
+                Console.WriteLine(intPile.IsFull);
+                Console.WriteLine(doublePile.IsEmpty);
+                Console.WriteLine(charPile.Capacity);
+                //Console.WriteLine(intPile[5]);
+                charPile.Add('h');
+                Console.WriteLine(intPile.Remove(2));
             }
             catch (Exception ex)
             {

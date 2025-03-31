@@ -11,6 +11,7 @@ namespace Workshop_8
     public class Pila<T> : IEnumerable<T>, ICollection<T>
     {
         //Atributes
+        const int ABSOLUTE_BOTTOM = -1;
         const int DEFAULT_SIZE = 8;
         private T[] data;
         private int top = -1;
@@ -19,6 +20,56 @@ namespace Workshop_8
         public int Count { get { return top + 1; } }
 
         public bool IsReadOnly {  get { return false; } }
+
+        /// <summary>
+        /// Propietat que indica si la Pila està plena
+        /// </summary>
+        public bool IsFull
+        {
+            get
+            {
+                if (data == null) throw new Exception("STACK IS EMPTY");
+
+                if (data.Length - 1 == top) return true;
+                else return false;
+            }
+        }
+
+        /// <summary>
+        /// Propietat si la pila està buida
+        /// </summary>
+        public bool IsEmpty
+        {
+            get
+            {
+                if (top == -1) return true;
+                else return false;
+            }
+        }
+
+
+        public T[] this[int index]
+        {
+            get
+            {
+                if (index < 0 || index.Equals(Count)) throw new ArgumentOutOfRangeException();
+
+                return data;
+            }
+        }
+
+        /// <summary>
+        /// Propietat que indica la capacitat de la Pila
+        /// </summary>
+        public int Capacity
+        {
+            get
+            {
+                if (data == null) throw new Exception("STAC IS EMPTY");
+
+                return data.Length;
+            }
+        }
 
         //Builders
         /// <summary>
@@ -72,6 +123,19 @@ namespace Workshop_8
             return data[this.top];
         }
 
+        public void Push(T item)
+        {
+            if (this.Count == data.Length) throw new StackOverflowException();
+
+
+            top++;
+            for (int i = top; i > top; i--)
+            {
+                data[i] = data[i - 1];
+            }
+            data[top] = item;
+        }
+
         public T[] ToArray()
         {
             T[] values = new T[data.Length];
@@ -102,15 +166,15 @@ namespace Workshop_8
             if (newCapacity > this.top)
             {
                 T[] newData = new T[newCapacity];
-                IEnumerator<T> ptr = new EnumeradorPila(data, top);
+                IEnumerator<T> cursor = new EnumeradorPila(data, top);
                 foreach (T item in data)
                 {
                     int counter = 0;
                     newData[counter] = item;
                     counter++;
-                    ptr.MoveNext();
+                    cursor.MoveNext();
                 }
-                ptr.Dispose();
+                cursor.Dispose();
                 data = newData;
                 finalCapacity = newCapacity;
             }
@@ -121,7 +185,7 @@ namespace Workshop_8
         {
             StringBuilder sB = new StringBuilder("[ ");
             IEnumerator<T> ptr = new EnumeradorPila(data, top);
-            foreach (T i in data)
+            /*foreach (T i in data)
             {
                 if (ptr.Current.Equals(data[0]))
                 {
@@ -132,6 +196,10 @@ namespace Workshop_8
                     sB.Append(ptr.Current + ", ");
                 }
                 ptr.MoveNext();
+            }*/
+            while (ptr.MoveNext())
+            {
+                sB.Append(ptr.Current + ", ");
             }
             ptr.Dispose();
             sB.Append(" ]");
@@ -159,32 +227,66 @@ namespace Workshop_8
         //Interface Methods
         public void Add(T item)
         {
-            throw new NotImplementedException();
+            if (IsReadOnly) throw new NotSupportedException();
+
+            Push(item);
         }
 
         public void Clear()
         {
-            throw new NotImplementedException();
+            if (IsReadOnly) throw new NotSupportedException();
+
+            data = null;
         }
 
         public bool Contains(T item)
         {
-            throw new NotImplementedException();
+            bool contains = false;
+            int nElem = top;
+            T element = data[nElem];
+            while (!contains)
+            {
+                if (item.Equals(element)) contains = true;
+                else
+                {
+                    nElem--;
+                    element = data[nElem];
+                }
+            }
+            return contains;
         }
 
         public void CopyTo(T[] array, int arrayIndex)
         {
-            throw new NotImplementedException();
+            if (array == null) throw new ArgumentNullException();
+            else if (arrayIndex < 0) throw new ArgumentOutOfRangeException();
+            else if (top > array.Length - arrayIndex) throw new ArgumentException();
+            IEnumerator<T> cursor = new EnumeradorPila(data, top);
+            while (cursor.MoveNext())
+            {
+                array[arrayIndex] = cursor.Current;
+                arrayIndex++;
+            }
+            cursor.Dispose();
         }
 
         public IEnumerator<T> GetEnumerator()
         {
-            throw new NotImplementedException();
+            return new EnumeradorPila(data, top);
         }
 
         public bool Remove(T item)
         {
-            throw new NotImplementedException();
+            if (IsReadOnly) throw new NotSupportedException();
+
+            bool removed = false;
+            T topElement = Peek();
+            if (topElement.Equals(item))
+            {
+                Pop();
+                removed = true;
+            }
+            return removed;
         }
 
         IEnumerator IEnumerable.GetEnumerator()
