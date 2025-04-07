@@ -19,7 +19,7 @@ namespace Workshop_8
         //Interface Propeties
         public int Count { get { return top + 1; } }
 
-        public bool IsReadOnly {  get { return false; } }
+        public bool IsReadOnly { get { return false; } }
 
         /// <summary>
         /// Propietat que indica si la Pila està plena
@@ -47,14 +47,20 @@ namespace Workshop_8
             }
         }
 
-
-        public T[] this[int index]
+        /// <summary>
+        /// Propietat (extreta parcialment de la interficie IList<T>, implementant solament la meitat "get")
+        /// que ens permet accedir de forma indexada a la pila.
+        /// </summary>
+        /// <param name="index">Posicio de l'element que volem veure de la pila</param>
+        /// <returns>L'element de la pila que es troba en l'index especificat com a paràmetre</returns>
+        /// <exception cref="ArgumentOutOfRangeException">L'índex és més gran o més petit que el recompte d'elements en la </exception>
+        public T this[int index]
         {
             get
             {
                 if (index < 0 || index.Equals(Count)) throw new ArgumentOutOfRangeException();
 
-                return data;
+                return data[index];
             }
         }
 
@@ -75,7 +81,7 @@ namespace Workshop_8
         /// <summary>
         /// Constructor que proporciona una Pila de tamany estandar usant la constant DEFAULT_SIZE
         /// </summary>
-        public Pila(): this(DEFAULT_SIZE) { }
+        public Pila() : this(DEFAULT_SIZE) { }
 
         /// <summary>
         /// Constructior que proporciona una Pila amb el tamany especificat en el main.
@@ -90,32 +96,51 @@ namespace Workshop_8
         /// Constructor que proporciona una Pila basada en una array passada com a parametre
         /// </summary>
         /// <param name="array">Array en la qual es basarà la Pila</param>
-        public Pila(T[] array)
+        public Pila(T[] array) : this((IEnumerable<T>)array)
         {
-            data = new T[array.Length];
+            /*data = new T[array.Length];
             for (int i = 0; i < array.Length; i++)
             {
                 data[i] = array[i];
+            }
+            top = data.Length - 1;*/
+        }
+
+        /// <summary>
+        /// Constructor que, donat un element IEnumerable, proporciona una pila basada en aquest paràmetre
+        /// </summary>
+        /// <param name="elementIEnumerable">Estructura que implementa la interficie IEnumerable, amb la qual construim la pila</param>
+        public Pila(IEnumerable<T> elementIEnumerable)
+        {
+            data = new T[elementIEnumerable.Count()];
+            for (int i = 0; i < elementIEnumerable.Count(); i++)
+            {
+                data[i] = elementIEnumerable.ElementAt(i);
             }
             top = data.Length - 1;
         }
 
         //Class Methods
+        /// <summary>
+        /// Mètode que mostra i elimina el primer element de la pila, si aquesta NO està buida
+        /// </summary>
+        /// <returns>El primer element de la pila</returns>
+        /// <exception cref="InvalidOperationException">L'excepció salta si pila està buida</exception>
         public T Pop()
         {
-            if (this.top == -1) throw new InvalidOperationException();
+            if (this.top == ABSOLUTE_BOTTOM) throw new InvalidOperationException();
 
-            T topElement = data[top];
-            T[] newData = new T[data.Length - 1];
-            for (int i = 0; i < top; i++)
-            {
-                newData[i] = data[i];
-            }
-            data = newData;
+            T topElement = data[this.top];
+            data[this.top] = default(T);
             top--;
             return topElement;
         }
 
+        /// <summary>
+        /// Mètode que mostra el primer element de la pila SENSE ELIMINAR-L'HO, si aquesta NO està buida
+        /// </summary>
+        /// <returns>El primer element de la pila</returns>
+        /// <exception cref="InvalidOperationException">L'excepció salta si pila està buida</exception>
         public T Peek()
         {
             if (this.top == -1) throw new InvalidOperationException();
@@ -123,108 +148,123 @@ namespace Workshop_8
             return data[this.top];
         }
 
+        /// <summary>
+        /// Mètode que afageix a la pila un element passat per paràmetre
+        /// </summary>
+        /// <param name="item">Element a afegir a la pila</param>
+        /// <exception cref="StackOverflowException">L'excepció salta si la pila està plena</exception>
         public void Push(T item)
         {
             if (this.Count == data.Length) throw new StackOverflowException();
 
-
             top++;
-            for (int i = top; i > top; i--)
-            {
-                data[i] = data[i - 1];
-            }
             data[top] = item;
         }
 
+        /// <summary>
+        /// Mètode que transfereix les dades de la pila a un array exterior amb el mateix tamany que la pila
+        /// </summary>
+        /// <returns>Array de llargada this.Count amb els valors de la pila</returns>
+        /// <exception cref="InvalidOperationException">L'excepció salta si pila està buida</exception>
         public T[] ToArray()
         {
-            T[] values = new T[data.Length];
-            IEnumerator<T> ptr = new EnumeradorPila(data, top);
-            foreach (T item in data)
+            if (this.Count == 0) throw new InvalidOperationException();
+
+            T[] values = new T[this.Count];
+            IEnumerator<T> cursor = new EnumeradorPila(data, top);
+            int i = 0;
+            values[i] = cursor.Current;
+            while (cursor.MoveNext() && i < Count)
             {
-                int i = 0;
-                if (ptr.Current.Equals(data[0]))
-                {
-                    values[i] = item;
-                }
-                else
-                {
-                    values[i] = item;
-                    i++;
-                }
-                ptr.MoveNext();
+                i++;
+                values[i] = cursor.Current;
             }
-            ptr.Dispose();
+            cursor.Dispose();
             return values;
         }
 
+        /// <summary>
+        /// Mètode que compara la capacitat de la pila amb la mova capacitat donada com a paràmetre, i si aquesta és més petita a
+        /// la nova capacitat, augmenta la capacitat de la pila. Si la pila té més espai que la nova capacitat donada, la pila no
+        /// canvia
+        /// </summary>
+        /// <param name="newCapacity">Quantitat d'espai que ha de tenir la pila </param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentOutOfRangeException">L'excepció salta si la nova capacitat és menor a 0</exception>
         public int EnsureCapacity(int newCapacity)
         {
             if (newCapacity < 0) throw new ArgumentOutOfRangeException();
 
             int finalCapacity = this.Count;
-            if (newCapacity > this.top)
+            if (newCapacity > this.Count)
             {
                 T[] newData = new T[newCapacity];
-                IEnumerator<T> cursor = new EnumeradorPila(data, top);
-                foreach (T item in data)
+                for (int i = 0; i < this.Count; i++)
                 {
-                    int counter = 0;
-                    newData[counter] = item;
-                    counter++;
-                    cursor.MoveNext();
+                    newData[i] = this.data[i];
                 }
-                cursor.Dispose();
+                finalCapacity = newData.Length;
                 data = newData;
-                finalCapacity = newCapacity;
             }
             return finalCapacity;
         }
 
+        /// <summary>
+        /// Mètode que produeix un string amb els elements de la pila
+        /// </summary>
+        /// <returns>La llista dels elements dins la pila en format string</returns>
         public override string ToString()
         {
-            StringBuilder sB = new StringBuilder("[ ");
-            IEnumerator<T> ptr = new EnumeradorPila(data, top);
-            /*foreach (T i in data)
+            IEnumerator<T> cursor = new EnumeradorPila(data, top);
+            StringBuilder sB = new StringBuilder("[ " + cursor.Current + ", ");
+            while (cursor.MoveNext())
             {
-                if (ptr.Current.Equals(data[0]))
-                {
-                    sB.Append(ptr.Current);
-                }
-                else
-                {
-                    sB.Append(ptr.Current + ", ");
-                }
-                ptr.MoveNext();
-            }*/
-            while (ptr.MoveNext())
-            {
-                sB.Append(ptr.Current + ", ");
+                sB.Append(cursor.Current + ", ");
             }
-            ptr.Dispose();
-            sB.Append(" ]");
+            cursor.Dispose();
+            sB[sB.Length - 2] = ' ';
+            sB[sB.Length - 1] = ']';
             return sB.ToString();
         }
 
+        /// <summary>
+        /// Mètode públic sobreescrit que compara la pila actual i una segona pila, a través d'un mètode privat homonim,
+        /// assegurant que les dues piles són comparables en tots els aspectes.
+        /// </summary>
+        /// <param name="obj">Pila comparada amb la pila actual</param>
+        /// <returns>Retorna "true" si les dues piles són iguals (segons les especificacions del mètode privat Equals), "false" en cas contrari</returns>
         public override bool Equals(object obj)
         {
             bool igual;
             if (ReferenceEquals(null, obj)) igual = false;
             else if (ReferenceEquals(this, obj)) igual = true;
             else if (obj.GetType() != this.GetType()) igual = false;
-            else igual = Equals((T)obj);
+            else igual = Equals((Pila<T>)obj);
             return igual;
         }
 
-        private bool Equals(T obj)
+        private bool Equals(Pila<T> obj)
         {
-            T thisObj = data[top];
-            bool igual = false;
-            if (thisObj.Equals(obj)) igual = true;
-            return igual;
+            bool pilesIgauls = true;
+            if (this.Count == obj.Count)
+            {
+                int i = 0;
+                while (pilesIgauls && i < this.Count)
+                {
+                    if (!this[i].Equals(obj[i])) pilesIgauls = false;
+                    else i++;
+                }
+            }
+            else pilesIgauls = false;
+            return pilesIgauls;
         }
 
         //Interface Methods
+        /// <summary>
+        /// Mètode heretat de la interficie ICollection<T>, amb la mateixa funcionalitat teòrica que el mètode Push (que és cridat aquí dintre)
+        /// </summary>
+        /// <param name="item">Element a afegir dins la pila</param>
+        /// <exception cref="NotSupportedException">L'excepció salta si la pila és només de lectura</exception>
         public void Add(T item)
         {
             if (IsReadOnly) throw new NotSupportedException();
@@ -232,6 +272,10 @@ namespace Workshop_8
             Push(item);
         }
 
+        /// <summary>
+        /// Mètode heretat de la interficie ICollection<T>, que buida la pila en una sola acció
+        /// </summary>
+        /// <exception cref="NotSupportedException">L'excepció salta si la pila és només de lectura</exception>
         public void Clear()
         {
             if (IsReadOnly) throw new NotSupportedException();
@@ -239,6 +283,11 @@ namespace Workshop_8
             data = null;
         }
 
+        /// <summary>
+        /// Mètode heretat de la interficie ICollection<T>, que cerca si l'element passat per paràmetre es troba dins la pila
+        /// </summary>
+        /// <param name="item">Element a cercar dins la pila</param>
+        /// <returns>Retorna "true" si "item" està dins la pila, "false" en cas contrari</returns>
         public bool Contains(T item)
         {
             bool contains = false;
@@ -256,6 +305,16 @@ namespace Workshop_8
             return contains;
         }
 
+        /// <summary>
+        /// Mètode heretat de la interficie ICollection<T>, que copia la pila dins un array passat com a paràmetre,
+        /// des de l'index especificat (també com a paràmetre). Si l'array és nul, l'índex és negatiu o l'array és massa
+        /// petit, saltarà excepció
+        /// </summary>
+        /// <param name="array">Array on es copiaran els elements dins la pila</param>
+        /// <param name="arrayIndex">Índex d'inici de la copia dins l'array</param>
+        /// <exception cref="ArgumentNullException">L'excepció salta si l'array donat és nul</exception>
+        /// <exception cref="ArgumentOutOfRangeException">L'excepció salta si l'índex d'inici de la copia és més petit que 0</exception>
+        /// <exception cref="ArgumentException">L'excepció salta si la pila té més elements que l'espai donat per fer la copia dins l'array</exception>
         public void CopyTo(T[] array, int arrayIndex)
         {
             if (array == null) throw new ArgumentNullException();
@@ -270,11 +329,27 @@ namespace Workshop_8
             cursor.Dispose();
         }
 
+        /// <summary>
+        /// Mètode heretat de la interficie IEnumerable<T>, que proporciona un cursor a través de la subclasse EnumeradorPila
+        /// </summary>
+        /// <returns>Un cursor amb el qual podem recorrer la pila</returns>
         public IEnumerator<T> GetEnumerator()
         {
             return new EnumeradorPila(data, top);
         }
 
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        /// <summary>
+        /// Mètode heretat de la interficie ICollection<T>, que, revisant si l'element passat com a paràmetre és el primer de la pila,
+        /// l'elimina d'aquesta cridant el mètode Pop(), retornant un valor booleà depenguent de si s'ha pogut eliminar o no.
+        /// </summary>
+        /// <param name="item">Element que s'hauria d'eliminar de la pila</param>
+        /// <returns>Retorna "true" si "item" s'ha tret de la pila, "false" en cas contrari</returns>
+        /// <exception cref="NotSupportedException">L'excepció salta si la pila és només de lectura</exception>
         public bool Remove(T item)
         {
             if (IsReadOnly) throw new NotSupportedException();
@@ -289,24 +364,30 @@ namespace Workshop_8
             return removed;
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
-
         //SubClasses
+        /// <summary>
+        /// Subclasse de la classe pila, utilitzada per generar cursors de recorregut de la pila
+        /// </summary>
         public class EnumeradorPila : IEnumerator<T>
         {
             const int BOTTOM_LIMMIT = -1;
             private int topElement;
             private T[] values;
 
+            /// <summary>
+            /// Constructor del cursor de la pila
+            /// </summary>
+            /// <param name="data">Taula amb els valors de la pila</param>
+            /// <param name="top">Nombre d'elements de la pila, i quin és el primer de tots</param>
             public EnumeradorPila(T[] data, int top)
             {
                 this.values = data;
                 this.topElement = top;
             }
 
+            /// <summary>
+            /// Propietat que ens proporciona el valor actual de la pila
+            /// </summary>
             public T Current
             {
                 get
@@ -317,6 +398,9 @@ namespace Workshop_8
                 }
             }
 
+            /// <summary>
+            /// Objecte propietat de retorna el valor de la propietat Current
+            /// </summary>
             object IEnumerator.Current
             {
                 get
@@ -325,11 +409,18 @@ namespace Workshop_8
                 }
             }
 
+            /// <summary>
+            /// Mètode que utilitzem per destruir el cursor
+            /// </summary>
             public void Dispose()
             {
                 this.values = null;
             }
 
+            /// <summary>
+            /// Mètode que ens indica si el cursor pot accedir el següent element de la pila, efectuant l'acció
+            /// </summary>
+            /// <returns>Retorna "true" si ens podem moure dins la pila, "false" en cas contrari (top == -1)</returns>
             public bool MoveNext()
             {
                 bool thereNext = true;
@@ -338,6 +429,9 @@ namespace Workshop_8
                 return thereNext;
             }
 
+            /// <summary>
+            /// Mètode que reinicia el cursor
+            /// </summary>
             public void Reset()
             {
                 this.topElement = values.Length - 1;
